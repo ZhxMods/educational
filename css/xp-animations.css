@@ -1,0 +1,346 @@
+/**
+ * css/xp-animations.css — XP System Visual Effects
+ * Level-up modals, toast notifications, progress bars
+ */
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*  LEVEL-UP MODAL                                                          */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.levelup-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.levelup-modal {
+  background: linear-gradient(135deg, #1e3a8a, #1d4ed8);
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+  max-width: 400px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.levelup-icon {
+  width: 96px;
+  height: 96px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.levelup-modal h2 {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.levelup-text {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.5rem;
+}
+
+.levelup-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 900;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.4);
+  animation: bounceIn 0.6s ease 0.2s both;
+}
+
+.levelup-xp {
+  font-size: 1.1rem;
+  color: #fde68a;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.btn-levelup-close {
+  padding: 0.875rem 2.5rem;
+  background: white;
+  color: #1d4ed8;
+  border: none;
+  border-radius: 50px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.btn-levelup-close:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*  TOAST NOTIFICATIONS                                                     */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.toast-notification {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  min-width: 280px;
+  max-width: 400px;
+  padding: 1rem 1.25rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 9999;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transform: translateX(calc(100% + 2rem));
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.toast-notification.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.toast-notification i {
+  flex-shrink: 0;
+}
+
+.toast-success {
+  background: #f0fdf4;
+  color: #166534;
+  border-left: 4px solid #22c55e;
+}
+
+.toast-success i {
+  color: #22c55e;
+}
+
+.toast-error {
+  background: #fef2f2;
+  color: #991b1b;
+  border-left: 4px solid #ef4444;
+}
+
+.toast-error i {
+  color: #ef4444;
+}
+
+.toast-info {
+  background: #eff6ff;
+  color: #1e40af;
+  border-left: 4px solid #3b82f6;
+}
+
+.toast-info i {
+  color: #3b82f6;
+}
+
+.toast-warning {
+  background: #fffbeb;
+  color: #92400e;
+  border-left: 4px solid #f59e0b;
+}
+
+.toast-warning i {
+  color: #f59e0b;
+}
+
+/* Mobile toast positioning */
+@media (max-width: 640px) {
+  .toast-notification {
+    top: auto;
+    bottom: 1.5rem;
+    right: 1rem;
+    left: 1rem;
+    transform: translateY(calc(100% + 2rem));
+  }
+
+  .toast-notification.show {
+    transform: translateY(0);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*  XP PROGRESS BAR                                                         */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.xp-bar-track {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  height: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.xp-bar-fill {
+  height: 100%;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #fde68a, #f59e0b);
+  transition: width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.xp-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*  LOADING SPINNER                                                         */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*  ANIMATIONS                                                              */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceIn {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*  UTILITY CLASSES                                                         */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.6s ease;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*  RESPONSIVE ADJUSTMENTS                                                  */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+  .levelup-modal {
+    padding: 2rem 1.5rem;
+    margin: 1rem;
+  }
+
+  .levelup-modal h2 {
+    font-size: 1.5rem;
+  }
+
+  .levelup-badge {
+    font-size: 2rem;
+    padding: 0.75rem 2rem;
+  }
+
+  .levelup-icon {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*  CONFETTI CANVAS (automatically created by xp-system.js)                */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* Canvas is created dynamically - no CSS needed */
